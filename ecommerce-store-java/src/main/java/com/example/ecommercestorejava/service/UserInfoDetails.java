@@ -1,7 +1,6 @@
 package com.example.ecommercestorejava.service;
 
 import com.example.ecommercestorejava.entity.UserInfo;
-import com.ey.springboot3security.entity.UserInfo;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
