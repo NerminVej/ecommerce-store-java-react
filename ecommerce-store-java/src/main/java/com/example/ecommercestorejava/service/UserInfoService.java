@@ -1,5 +1,7 @@
 package com.example.ecommercestorejava.service;
 
+import com.example.ecommercestorejava.entity.UserInfo;
+import com.example.ecommercestorejava.repository.UserInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
