@@ -2,6 +2,7 @@ package com.example.ecommercestorejava.filter;
 
 
 import com.example.ecommercestorejava.service.JwtService;
+import com.example.ecommercestorejava.service.UserInfoService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
