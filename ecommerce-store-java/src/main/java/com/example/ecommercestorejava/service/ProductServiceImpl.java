@@ -4,6 +4,7 @@ package com.example.ecommercestorejava.service;
 
 import com.example.ecommercestorejava.entity.Product;
 import com.example.ecommercestorejava.exception.ResourceNotFoundException;
+import com.example.ecommercestorejava.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
