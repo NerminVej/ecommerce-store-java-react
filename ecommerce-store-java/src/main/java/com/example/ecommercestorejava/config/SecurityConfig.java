@@ -37,6 +37,7 @@ public class SecurityConfig {
         return new UserInfoService();
     }
 
+    // TODO: My solution seems to be deprecated so I need to look at the up to date way of implementing the security filter chain
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf().disable()
