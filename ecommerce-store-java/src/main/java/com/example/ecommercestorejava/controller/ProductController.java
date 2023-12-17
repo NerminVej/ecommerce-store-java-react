@@ -4,10 +4,11 @@ package com.example.ecommercestorejava.controller;
 
 import com.example.ecommercestorejava.entity.Product;
 import com.example.ecommercestorejava.service.ProductService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 @RestController
@@ -23,5 +24,11 @@ public class ProductController {
     @GetMapping(value = { "", "/" })
     public @NotNull Iterable<Product> getProducts() {
         return productService.getAllProducts();
+    }
+
+    @PostMapping
+    public ResponseEntity<Product> createProduct(@RequestBody @Valid Product product) {
+        Product savedProduct = productService.save(product);
+        return new ResponseEntity<>(savedProduct, HttpStatus.CREATED);
     }
 }
