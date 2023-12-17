@@ -1,6 +1,9 @@
 package com.example.ecommercestorejava.service;
 
 
+import com.example.ecommercestorejava.dto.JwtAuthenticationResponse;
+import com.example.ecommercestorejava.dto.SignInRequest;
+import com.example.ecommercestorejava.dto.SignUpRequest;
 import com.example.ecommercestorejava.entity.Role;
 import com.example.ecommercestorejava.entity.User;
 import com.example.ecommercestorejava.repository.UserRepository;
