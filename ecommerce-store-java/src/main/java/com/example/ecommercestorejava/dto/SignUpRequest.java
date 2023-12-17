@@ -1,4 +1,4 @@
-package com.example.ecommercestorejava.controller;
+package com.example.ecommercestorejava.dto;
 
 
 import lombok.AllArgsConstructor;
