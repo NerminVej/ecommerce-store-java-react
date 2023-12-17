@@ -1,4 +1,4 @@
-package com.example.ecommercestorejava.config;
+package com.example.ecommercestorejava.filter;
 
 import java.io.IOException;
 
