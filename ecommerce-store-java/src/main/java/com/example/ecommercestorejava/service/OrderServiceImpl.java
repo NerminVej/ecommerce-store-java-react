@@ -1,12 +1,16 @@
 package com.example.ecommercestorejava.service;
 
 
+import com.example.ecommercestorejava.dto.OrderProductDto;
 import com.example.ecommercestorejava.entity.Order;
+import com.example.ecommercestorejava.entity.OrderStatus;
 import com.example.ecommercestorejava.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -34,4 +38,6 @@ public class OrderServiceImpl implements OrderService {
     public void update(Order order) {
         this.orderRepository.save(order);
     }
+
+
 }
