@@ -5,10 +5,12 @@ import com.example.ecommercestorejava.dto.OrderProductDto;
 import com.example.ecommercestorejava.entity.Order;
 import com.example.ecommercestorejava.entity.OrderProduct;
 import com.example.ecommercestorejava.entity.OrderStatus;
+import com.example.ecommercestorejava.entity.User;
 import com.example.ecommercestorejava.exception.ResourceNotFoundException;
 import com.example.ecommercestorejava.service.OrderProductService;
 import com.example.ecommercestorejava.service.OrderService;
 import com.example.ecommercestorejava.service.ProductService;
+import com.example.ecommercestorejava.service.UserService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.constraints.NotNull;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -30,16 +33,25 @@ public class OrderController {
     OrderService orderService;
     OrderProductService orderProductService;
 
-    public OrderController(ProductService productService, OrderService orderService, OrderProductService orderProductService) {
+    private final UserService userService;
+
+    public OrderController(ProductService productService, OrderService orderService,
+                           OrderProductService orderProductService, UserService userService) {
         this.productService = productService;
         this.orderService = orderService;
         this.orderProductService = orderProductService;
+        this.userService = userService;
     }
 
-    @GetMapping
+
+    @GetMapping("/current-user")
     @ResponseStatus(HttpStatus.OK)
-    public @NotNull Iterable<Order> list() {
-        return this.orderService.getAllOrders();
+    public @NotNull Iterable<Order> getAllOrdersForCurrentUser(Principal principal) {
+        User currentUser = userService.findByEmail(principal.getName())
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+
+        // Assuming you have a method in OrderService to get orders by user
+        return orderService.getOrdersByUser(currentUser.getId());
     }
 
     @PostMapping
@@ -89,7 +101,7 @@ public class OrderController {
                 .collect(Collectors.toList());
 
         if (!CollectionUtils.isEmpty(list)) {
-            new ResourceNotFoundException("Product not found");
+            throw new ResourceNotFoundException("Product not found");
         }
     }
 
