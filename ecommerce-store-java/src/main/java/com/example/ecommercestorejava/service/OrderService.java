@@ -18,4 +18,5 @@ public interface OrderService {
 
     void update(@NotNull(message = "The order cannot be null.") @Valid Order order);
 
+    Iterable<Order> getOrdersByUser(Long userId);
 }
