@@ -39,10 +39,6 @@ public class OrderServiceImpl implements OrderService {
         this.orderRepository.save(order);
     }
 
-    @Override
-    public Iterable<Order> getOrdersByUser(Long userId) {
-        // Assuming you have a method in OrderRepository to find orders by user id
-        return orderRepository.findByUserId(userId);
-    }
+
 
 }

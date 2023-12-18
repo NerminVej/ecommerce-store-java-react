@@ -44,15 +44,7 @@ public class OrderController {
     }
 
 
-    @GetMapping("/current-user")
-    @ResponseStatus(HttpStatus.OK)
-    public @NotNull Iterable<Order> getAllOrdersForCurrentUser(Principal principal) {
-        User currentUser = userService.findByEmail(principal.getName())
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
-        // Assuming you have a method in OrderService to get orders by user
-        return orderService.getOrdersByUser(currentUser.getId());
-    }
 
     @PostMapping
     public ResponseEntity<Order> create(@RequestBody OrderForm form) {
